@@ -16,38 +16,63 @@ import {
   Menu
 } from 'lucide-react'
 
+
 const jobs = [
   {
     name: 'Production',
     number: 120,
     icon: '🏭',
-    overview: 'Support daily production activities and help maintain smooth operations.',
+    overview: 'Support daily production activities and help maintain smooth and efficient operations.',
+    responsibilities: [
+      'Assist with daily production processes.',
+      'Check products and materials for quality.',
+      'Keep the working area clean and organized.',
+      'Follow workplace safety procedures.'
+    ],
     skills: 'Teamwork, attention to detail, communication and willingness to learn.',
-    benefit: 'Creates employment opportunities and helps residents develop practical workplace skills.'
+    benefit: 'Creates employment opportunities, supports household income and helps residents gain practical workplace experience.'
   },
   {
     name: 'Technicians',
     number: 70,
     icon: '⚙️',
-    overview: 'Assist with technical operations, equipment maintenance and operational support.',
-    skills: 'Technical knowledge, problem-solving, safety awareness and attention to detail.',
-    benefit: 'Provides opportunities to develop technical knowledge and skills for future careers.'
+    overview: 'Support technical operations and help maintain equipment and production systems.',
+    responsibilities: [
+      'Assist with equipment inspection and maintenance.',
+      'Monitor equipment performance.',
+      'Identify and report technical issues.',
+      'Follow technical and safety procedures.'
+    ],
+    skills: 'Technical knowledge, problem-solving, attention to detail and safety awareness.',
+    benefit: 'Provides opportunities to develop technical skills and gain experience that may support future career development.'
   },
   {
     name: 'Administration',
     number: 40,
     icon: '📋',
-    overview: 'Support office operations, documentation, coordination and communication.',
+    overview: 'Support office operations, documentation and coordination across project activities.',
+    responsibilities: [
+      'Prepare and organize documents.',
+      'Maintain records and basic information.',
+      'Coordinate meetings and daily activities.',
+      'Support communication between teams.'
+    ],
     skills: 'Organization, computer skills, communication and time management.',
-    benefit: 'Builds administrative and professional skills that can be useful in different industries.'
+    benefit: 'Helps residents develop administrative and professional skills that can be useful in different industries.'
   },
   {
     name: 'Security & Cleaning',
     number: 20,
     icon: '🛡️',
-    overview: 'Help maintain a safe, organized and clean project environment.',
+    overview: 'Help maintain a safe, clean and organized project environment.',
+    responsibilities: [
+      'Monitor site access and support site security.',
+      'Help maintain clean working areas.',
+      'Report safety or maintenance concerns.',
+      'Follow workplace safety procedures.'
+    ],
     skills: 'Responsibility, teamwork, reliability and awareness of safety procedures.',
-    benefit: 'Provides local income opportunities and supports a safe working environment.'
+    benefit: 'Creates local income opportunities while supporting a safe and clean working environment.'
   }
 ]
 
@@ -285,33 +310,76 @@ function JobsPage({ openJob }) {
   )
 }
 
+
 function JobDetail({ job, back }) {
   return (
     <div className="space-y-4">
-      <button onClick={back} className="flex items-center gap-2 text-xs font-semibold text-[#688676]">
-        <ArrowLeft size={16} /> Back to job opportunities
+
+      <button
+        onClick={back}
+        className="flex items-center gap-2 text-xs font-semibold text-[#688676]"
+      >
+        <ArrowLeft size={16} />
+        Back to job opportunities
       </button>
 
       <div className="rounded-2xl bg-[#E8EFE7] p-5">
         <div className="text-3xl">{job.icon}</div>
-        <h2 className="mt-3 text-xl font-bold text-[#193D31]">{job.name}</h2>
-        <p className="mt-1 text-sm text-[#688676]">{job.number} positions</p>
+        <h2 className="mt-3 text-xl font-bold text-[#193D31]">
+          {job.name}
+        </h2>
+        <p className="mt-1 text-sm text-[#688676]">
+          {job.number} positions
+        </p>
       </div>
 
       <Card>
-        <h3 className="text-sm font-bold text-[#193D31]">Role overview</h3>
-        <p className="mt-2 text-xs leading-5 text-[#69766E]">{job.overview}</p>
+        <h3 className="text-sm font-bold text-[#193D31]">
+          Role Overview
+        </h3>
+        <p className="mt-2 text-xs leading-5 text-[#69766E]">
+          {job.overview}
+        </p>
       </Card>
 
       <Card>
-        <h3 className="text-sm font-bold text-[#193D31]">Relevant skills</h3>
-        <p className="mt-2 text-xs leading-5 text-[#69766E]">{job.skills}</p>
+        <h3 className="text-sm font-bold text-[#193D31]">
+          Key Responsibilities
+        </h3>
+        <ul className="mt-3 space-y-2">
+          {job.responsibilities.map((item, index) => (
+            <li
+              key={index}
+              className="flex gap-2 text-xs leading-5 text-[#69766E]"
+            >
+              <span className="text-[#688676]">•</span>
+              {item}
+            </li>
+          ))}
+        </ul>
       </Card>
 
       <Card>
-        <h3 className="text-sm font-bold text-[#193D31]">Community benefits</h3>
-        <p className="mt-2 text-xs leading-5 text-[#69766E]">{job.benefit}</p>
+        <h3 className="text-sm font-bold text-[#193D31]">
+          Skills Needed
+        </h3>
+        <p className="mt-2 text-xs leading-5 text-[#69766E]">
+          {job.skills}
+        </p>
+        <p className="mt-2 text-[10px] leading-4 text-[#89938B]">
+          Specific qualifications depend on the position and hiring requirements.
+        </p>
       </Card>
+
+      <Card>
+        <h3 className="text-sm font-bold text-[#193D31]">
+          Benefits for the Community
+        </h3>
+        <p className="mt-2 text-xs leading-5 text-[#69766E]">
+          {job.benefit}
+        </p>
+      </Card>
+
     </div>
   )
 }
